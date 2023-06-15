@@ -1,0 +1,12 @@
+{% extends 'base/layout.html' %}
+{% block content %}
+    <h1>Registro de usuarios</h1>
+    <form method="POST" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="registrar"/>
+    </form>
+    <p>
+        ¿Ya tienes una cuenta? <a href="{% url 'login' %}">ir a login</a>
+    </p>
+{% endblock content %}

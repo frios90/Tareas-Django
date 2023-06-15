@@ -1,0 +1,27 @@
+{% extends 'base/layout.html' %}
+{% block content %}
+
+    <h1>Detalle de la tarea: {{ tarea }}</h1>
+    <div>
+        <a href="{% url 'tareas' %}"> < volver</a>
+    </div>
+    <br>
+    <table>
+        <tr>
+            <th>Título</th>
+            <td>{{ tarea.titulo }}</td>
+        </tr>
+        <tr>
+            <th>Descripcion</th>
+            <td>{{ tarea.descripcion }}</td>
+        </tr>
+        <tr>
+            <th>Completado</th>
+            <td>{{ tarea.completado }}</td>
+        </tr>
+        <tr>
+            <th>Usuario</th>
+            <td>{{ tarea.usuario }}</td>
+        </tr>
+    </table>
+{% endblock content %}

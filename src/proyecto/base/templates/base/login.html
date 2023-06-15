@@ -1,0 +1,12 @@
+{% extends 'base/layout.html' %}
+{% block content %}
+    <h1>Ingresar al sistema</h1>
+    <form method="POST" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="iniciar"/>
+    </form>
+    <p>
+        ¿No estas registrado? <a href="{% url 'registro' %}">registrate</a>
+    </p>
+{% endblock content %}

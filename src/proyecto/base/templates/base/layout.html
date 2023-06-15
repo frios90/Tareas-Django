@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lista de tareas</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+        <style>
+            /**
+                Paleta
+                #525252
+                #414141
+                #313131
+                #EC625F
+                #42b883
+            */
+            :root {
+                --clr-001: #525252;
+                --clr-002: #414141;
+                --clr-003: #313131;
+                --clr-004: #EC625F;
+                --clr-005: #42b883;
+                --clr-006: #f1f3f5;
+            }
+
+
+            body {
+                background-color: var(--clr-003);
+                color: var(--clr-006);
+                font-family: 'Orbitron', sans-serif;
+                padding-top : 5rem
+            }
+
+            input, textarea {
+                font-family: 'Orbitron', sans-serif;
+            }
+
+            a {
+                background-color: var(--clr-005);
+                color: var(--clr-006);
+                text-decoration: none;
+                padding: 1px 2px;
+                border-radius: .1rem;
+            }
+
+            input[type="submit"]  {
+                background-color: var(--clr-005);
+                color: var(--clr-006);
+                border : none;
+                padding: .5rem 1rem;
+                border-radius: .1rem;
+            }
+
+            .container {
+                padding: 1rem;
+                margin: auto;
+                max-width: 60rem;
+                height: 30rem;
+                background-color: var(--clr-002);
+                -webkit-box-shadow: 10px 10px 5px 0px var(--clr-005);
+                -moz-box-shadow: 10px 10px 5px 0px var(--clr-005);
+                box-shadow: 10px 10px 5px 0px var(--clr-005);
+            }
+
+            .container-table-tareas {
+                max-height: 15rem;
+                overflow-y: scroll;
+            }
+
+            .table-tareas {
+                width: 100%;
+            }
+
+            .table-tareas thead th {
+                text-align: left;
+                background-color: var(--clr-004);
+                padding: 4px 2px;
+            }
+            .table-tareas tbody td {
+                text-align: left;
+                padding: 4px 2px;
+                font-size: .9rem;
+            }
+            .table-tareas tbody tr:nth-child(2n+1) {
+                background-color:var(--clr-003);
+            }
+            .table-tareas tbody tr:nth-child(2n) {
+                background-color:var(--clr-002);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container" >
+            {% if request.user.is_authenticated %}
+                <div style="display: flex; justify-content: space-between">
+                    <div>
+                        <small>Sesión de usuario : <strong>{{request.user}}</strong></small>
+                    </div>
+
+                    <div>
+                        <a href="{% url 'logout' %}">x salir</a>
+                    </div>
+                </div>
+            {% else %}
+                <div>
+                    El usuario no esta logueado
+                    <br>
+                    <a href="{% url 'login' %}">iniciar sesión</a>
+                </div>
+            {% endif %}
+            <hr>
+            {% block content %}
+
+            {% endblock content %}
+        </div>
+    </body>
+</html>

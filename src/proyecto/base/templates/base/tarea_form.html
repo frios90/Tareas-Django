@@ -1,0 +1,11 @@
+{% extends 'base/layout.html' %}
+{% block content %}
+    <h1>Formulario de tareas</h1>
+    <div>
+        <a href="{% url 'tareas' %}"> < volver</a>
+    </div>
+    <form method="POST" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="guardar"/>
+{% endblock content %}

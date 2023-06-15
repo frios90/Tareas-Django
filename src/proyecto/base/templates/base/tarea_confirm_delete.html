@@ -1,0 +1,16 @@
+{% extends 'base/layout.html' %}
+{% block content %}
+    <h3>Eliminar tarea : {{ tarea }}</h3>
+    <div>
+        <a href="{% url 'tareas' %}"> < volver</a>
+    </div>
+    <form method="POST" action="">
+        {% csrf_token %}
+        <p>
+            Vas a eliminar esta tarea:
+            "{{ tarea }}"
+        </p>
+        <input type="submit" value="Sí" style="background-color: var(--clr-004);"/>
+        <a href="{% url 'tareas' %}"> No</a>
+    </form>
+{% endblock content %}
